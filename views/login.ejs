@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 13, 255, 0.2);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #0a0a0a;
+      letter-spacing: 1px;
+      font-size: 1.8rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #555;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 25px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #000dff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 13, 255, 0.3);
+    }
+
+    button {
+      width: 100%;
+      padding: 15px 0;
+      background-color: #000dff;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0033ff;
+    }
+
+    .register-button {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .register-button a {
+      color: #000dff;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 6px;
+      transition: text-decoration 0.3s;
+    }
+
+    .register-button a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: #ff4d4d;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+    <form action="/login" method="POST" autocomplete="off">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Login</button>
+    </form>
+    <div class="register-button">
+      New here? <a href="/">Register</a>
+    </div>
+  </div>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login | Dark Mode</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    background: #1f2937;
+    border-radius: 16px;
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.5),
+      inset 0 0 20px #4a90e2;
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  h2 {
+    margin: 0 0 25px 0;
+    font-weight: 600;
+    font-size: 2.2rem;
+    text-align: center;
+    color: #4a90e2;
+    letter-spacing: 1.2px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: #a0aec0;
+  }
+
+  input[type="email"],
+input[type="password"],
+input[type="text"] {
+  background: #2d3748;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  border: 1.5px solid transparent;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  background-color: #374151; /* darker but subtle */
+  border-color: #60a5fa;    /* soft blue border */
+  box-shadow: 0 0 8px 2px rgba(96, 165, 250, 0.3); /* soft blue glow with low opacity */
+  color: #e0e7ff;
+}
+
+  button {
+    background: #3b82f6;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #e0e7ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
+  }
+
+  button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.7);
+  }
+
+  .register-link {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #94a3b8;
+  }
+
+  .register-link a {
+    color: #60a5fa;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .register-link a:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+  }
+
+  .error-message {
+    background-color: #f87171;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Welcome Back</h2>
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+    <form action="/login" method="POST" autocomplete="off">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p class="register-link">
+      New here? <a href="/">Create an account</a>
+    </p>
+  </div>
+
+</body>
+</html> -->
